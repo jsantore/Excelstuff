@@ -1,5 +1,6 @@
 import openpyxl
 import numbers
+import openpyxl.utils
 
 
 def get_excel_sheet(filename):
@@ -21,10 +22,19 @@ def examine_data(income_sheet):
         income_value = income_cell.value
         if not isinstance(income_value, numbers.Number):
             continue
-        income2015_cell = row[13]
+        #income2015_cell = row[13]
+        income2015_cell_number = openpyxl.utils.cell.column_index_from_string('n')-1
+        income2015_cell = row[income2015_cell_number]
         income2015 = income2015_cell.value
-        if income_value-income2015 > answer:
-            print(f"{first_cell.value} : {income_value} old 2105 income {income2015}")
+        income_change = income_value - income2015
+        income_chance_percent = income_change/income_value
+        income_chance_percent = income_chance_percent *100
+        if income_chance_percent>answer:
+            print(f"{first_cell.value} had a {income_chance_percent}% change in income")
+
+#old stuff below
+        # if income_value-income2015 > answer:
+        #     print(f"{first_cell.value} : {income_value} old 2105 income {income2015}")
 
 
 main()
