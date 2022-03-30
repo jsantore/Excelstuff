@@ -1,6 +1,7 @@
 import openpyxl
 import numbers
 import openpyxl.utils
+import plotly.graph_objects
 
 
 def get_excel_sheet(filename):
@@ -29,9 +30,17 @@ def examine_data(income_sheet):
         income_change = income_value - income2015
         income_chance_percent = income_change/income_value
         income_chance_percent = income_chance_percent *100
-        if income_chance_percent>answer:
-            print(f"{first_cell.value} had a {income_chance_percent}% change in income")
+    
+    map_to_show = plotly.graph_objects.Figure(
+        data=plotly.graph_objects.Choropleth(
+            locations= " fill in here",
+            z= "fill in data here",
+            locationmode="USA-states",
+            colorscale='Jet',
+            colorbar="fill in here soon"
 
+        )
+        )
 #old stuff below
         # if income_value-income2015 > answer:
         #     print(f"{first_cell.value} : {income_value} old 2105 income {income2015}")
