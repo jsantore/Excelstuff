@@ -16,8 +16,8 @@ def main():
     examine_data(income_data_sheet)
 
 def examine_data(income_sheet):
-    answer = int(input("What is the cutoff for income growth"))
-    print(f"States Whose Median Income Grew more than {answer} in 2015-2020")
+    #answer = int(input("What is the cutoff for income growth"))
+    #print(f"States Whose Median Income Grew more than {answer} in 2015-2020")
     list_of_state_abrev = []
     list_of_income_changes = []
     for row in income_sheet.rows:
@@ -45,10 +45,15 @@ def examine_data(income_sheet):
             z= list_of_income_changes,
             locationmode="USA-states",
             colorscale='Jet',
-            colorbar="fill in here soon"
+            colorbar_title="fill in here soon"
+        )
+        )
+    map_to_show.update_layout(
+        title_text= "Income Change 2015 to 2020",
+        geo_scope="usa"
+    )
+    map_to_show.show()
 
-        )
-        )
 #old stuff below
         # if income_value-income2015 > answer:
         #     print(f"{first_cell.value} : {income_value} old 2105 income {income2015}")
