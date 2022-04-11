@@ -44,8 +44,8 @@ def examine_data(income_sheet):
             locations= list_of_state_abrev,
             z= list_of_income_changes,
             locationmode="USA-states",
-            colorscale='Jet',
-            colorbar_title="fill in here soon"
+            colorscale='Picnic',
+            colorbar_title="amount of income"
         )
         )
     map_to_show.update_layout(
